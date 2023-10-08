@@ -26,15 +26,22 @@ void AMainCharacter::Tick(float DeltaTime)
 
 }
 
+void AMainCharacter::SpawnBookActionCB(const FInputActionInstance& Instance)
+{
+	bool BoolValue = Instance.GetValue().Get<bool>();
+	if (BoolValue)
+	{
+		SpawnBook();
+	}
+}
+
 // Called to bind functionality to input
 void AMainCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-	/*
 	UEnhancedInputComponent* Input = Cast<UEnhancedInputComponent>(PlayerInputComponent);
 	// You can bind to any of the trigger events here by changing the "ETriggerEvent" enum value
-	Input->BindAction(AimingInputAction, ETriggerEvent::Triggered, this, &AFooBar::SomeCallbackFunc);
-	*/
+	Input->BindAction(SpawnBookAction, ETriggerEvent::Triggered, this, &AMainCharacter::SpawnBookActionCB);
 
 }
 
@@ -45,18 +52,3 @@ void AMainCharacter::SpawnBook()
 
 	GetWorld()->SpawnActor<ABook>(bookBlueprint, GetActorTransform(), spawnParams);
 }
-/*
-void AMainCharacter::SpawnBook(const FInputActionInstance& Instance)
-{
-    bool BoolValue = Instance.GetValue().Get<bool>();
-	if (BoolValue)
-	{
-		FActorSpawnParameters spawnParams;
-		spawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
-
-		GetWorld()->SpawnActor<ABook>(bookBlueprint, GetActorTransform(), spawnParams);
-
-	}
-}
-*/
-

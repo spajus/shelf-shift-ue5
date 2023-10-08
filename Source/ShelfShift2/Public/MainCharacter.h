@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GameInputComponent.h"
 #include "GameFramework/Character.h"
 #include "Book.h"
 #include "MainCharacter.generated.h"
@@ -19,8 +20,16 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Debug")
 	void SpawnBook();
 
+	UFUNCTION(BlueprintCallable, Category = "Debug")
+	void SpawnBookActionCB(const FInputActionInstance& Instance);
+
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<ABook> bookBlueprint;
+
+	/** Jump Input Action */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* SpawnBookAction;
+
 
 protected:
 	// Called when the game starts or when spawned
