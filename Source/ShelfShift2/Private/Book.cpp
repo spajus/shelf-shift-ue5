@@ -25,10 +25,19 @@ ABook::ABook()
         MeshComponent->SetStaticMesh(MeshAsset.Object);
     }
 	MeshComponent->SetSimulatePhysics(true);
+	// Increase mass
+	MeshComponent->SetMassOverrideInKg(NAME_None, 10.0f, true);
+
+	// Increase damping
+	MeshComponent->BodyInstance.LinearDamping = 1.0f;
+	MeshComponent->BodyInstance.AngularDamping = 1.0f;
 }
 
 void ABook::ThrowAt(FVector dir) {
+	float Speed = 1000.0f;  // Adjust speed as needed
+	FVector InitialVelocity = dir * Speed;
 
+	MeshComponent->SetPhysicsLinearVelocity(InitialVelocity);
 }
 
 // Called when the game starts or when spawned

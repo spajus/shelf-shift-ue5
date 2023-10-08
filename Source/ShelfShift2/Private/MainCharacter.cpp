@@ -2,6 +2,8 @@
 
 
 #include "MainCharacter.h"
+#include "Camera/CameraComponent.h"
+#include "Math/Quat.h"
 #include "Book.h"
 
 // Sets default values
@@ -49,7 +51,7 @@ void AMainCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	UEnhancedInputComponent* Input = Cast<UEnhancedInputComponent>(PlayerInputComponent);
 	// You can bind to any of the trigger events here by changing the "ETriggerEvent" enum value
-	Input->BindAction(SpawnBookAction, ETriggerEvent::Started, this, &AMainCharacter::SpawnBookActionCB);
+	Input->BindAction(SpawnBookAction, ETriggerEvent::Triggered, this, &AMainCharacter::SpawnBookActionCB);
 	Input->BindAction(FreeLookAction, ETriggerEvent::Triggered, this, &AMainCharacter::FreeLookActionCB);
 	Input->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AMainCharacter::MoveActionCB);
 	Input->BindAction(JumpAction, ETriggerEvent::Started, this, &AMainCharacter::Jump);
@@ -62,16 +64,24 @@ void AMainCharacter::SpawnBook()
 	FActorSpawnParameters spawnParams;
 	spawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
 
-	FTransform playerTr = GetActorTransform();
-	FVector fwd = GetActorForwardVector();
-	FVector loc = playerTr.GetLocation() + (fwd * SpawnFwdDist);
+
+	FVector pLoc;
+	FRotator pRot;
+	GetActorEyesViewPoint(pLoc, pRot);
+	FVector FwdVec(1, 0, 0);
+	FVector fwd = pRot.RotateVector(FwdVec);
+
+	//FTransform playerTr = GetActorTransform();
+	//FVector fwd =  GetActorForwardVector();
+	FVector loc = pLoc + (fwd * SpawnFwdDist);
 	FRotator rot(
 		FMath::RandRange(0.0f, 360.0f),
 		FMath::RandRange(0.0f, 360.0f),
 		FMath::RandRange(0.0f, 360.0f));
 
-	FTransform newTr(rot, loc);
-	GetWorld()->SpawnActor<ABook>(bookBlueprint, newTr, spawnParams);
+	FTransform newTr(rot, pLoc);
+	ABook* book = GetWorld()->SpawnActor<ABook>(bookBlueprint, newTr, spawnParams);
+	book->ThrowAt(fwd);
 }
 void AMainCharacter::SpawnBookActionCB(const FInputActionInstance& Instance)
 {
