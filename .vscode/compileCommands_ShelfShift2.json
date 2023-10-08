@@ -1,0 +1,106 @@
+[
+	{
+		"file": "D:\\Unreal\\Projects\\ShelfShift2\\Source\\ShelfShift2\\Private\\Book.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Unreal\\Projects\\ShelfShift2\\.vscode\\compileCommands_ShelfShift2\\ShelfShift2.1.rsp"
+		],
+		"directory": "D:\\Unreal\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Unreal\\Projects\\ShelfShift2\\Source\\ShelfShift2\\Private\\Bookshelf.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Unreal\\Projects\\ShelfShift2\\.vscode\\compileCommands_ShelfShift2\\ShelfShift2.1.rsp"
+		],
+		"directory": "D:\\Unreal\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Unreal\\Projects\\ShelfShift2\\Source\\ShelfShift2\\Private\\GameLogic.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Unreal\\Projects\\ShelfShift2\\.vscode\\compileCommands_ShelfShift2\\ShelfShift2.1.rsp"
+		],
+		"directory": "D:\\Unreal\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Unreal\\Projects\\ShelfShift2\\Source\\ShelfShift2\\Private\\MainCharacter.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Unreal\\Projects\\ShelfShift2\\.vscode\\compileCommands_ShelfShift2\\ShelfShift2.1.rsp"
+		],
+		"directory": "D:\\Unreal\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Unreal\\Projects\\ShelfShift2\\Source\\ShelfShift2\\Private\\MainPlayerController.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Unreal\\Projects\\ShelfShift2\\.vscode\\compileCommands_ShelfShift2\\ShelfShift2.1.rsp"
+		],
+		"directory": "D:\\Unreal\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Unreal\\Projects\\ShelfShift2\\Source\\ShelfShift2\\Public\\Book.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Unreal\\Projects\\ShelfShift2\\.vscode\\compileCommands_ShelfShift2\\ShelfShift2.1.rsp"
+		],
+		"directory": "D:\\Unreal\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Unreal\\Projects\\ShelfShift2\\Source\\ShelfShift2\\Public\\Bookshelf.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Unreal\\Projects\\ShelfShift2\\.vscode\\compileCommands_ShelfShift2\\ShelfShift2.1.rsp"
+		],
+		"directory": "D:\\Unreal\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Unreal\\Projects\\ShelfShift2\\Source\\ShelfShift2\\Public\\GameLogic.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Unreal\\Projects\\ShelfShift2\\.vscode\\compileCommands_ShelfShift2\\ShelfShift2.1.rsp"
+		],
+		"directory": "D:\\Unreal\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Unreal\\Projects\\ShelfShift2\\Source\\ShelfShift2\\Public\\MainCharacter.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Unreal\\Projects\\ShelfShift2\\.vscode\\compileCommands_ShelfShift2\\ShelfShift2.1.rsp"
+		],
+		"directory": "D:\\Unreal\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Unreal\\Projects\\ShelfShift2\\Source\\ShelfShift2\\Public\\MainPlayerController.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Unreal\\Projects\\ShelfShift2\\.vscode\\compileCommands_ShelfShift2\\ShelfShift2.1.rsp"
+		],
+		"directory": "D:\\Unreal\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Unreal\\Projects\\ShelfShift2\\Source\\ShelfShift2\\ShelfShift2.Build.cs",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Unreal\\Projects\\ShelfShift2\\.vscode\\compileCommands_ShelfShift2\\ShelfShift2.1.rsp"
+		],
+		"directory": "D:\\Unreal\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Unreal\\Projects\\ShelfShift2\\Source\\ShelfShift2\\ShelfShift2.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Unreal\\Projects\\ShelfShift2\\.vscode\\compileCommands_ShelfShift2\\ShelfShift2.1.rsp"
+		],
+		"directory": "D:\\Unreal\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Unreal\\Projects\\ShelfShift2\\Source\\ShelfShift2\\ShelfShift2.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Unreal\\Projects\\ShelfShift2\\.vscode\\compileCommands_ShelfShift2\\ShelfShift2.1.rsp"
+		],
+		"directory": "D:\\Unreal\\UE_5.3\\Engine\\Source"
+	}
+]
