@@ -62,6 +62,15 @@ void AMainCharacter::SpawnBook()
 	FActorSpawnParameters spawnParams;
 	spawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
 
+	FTransform playerTr = GetActorTransform();
+	FVector fwd = GetActorForwardVector();
+	FVector loc = playerTr.GetLocation() + (fwd * 100.0f);
+	FRotator rot(
+		FMath::RandRange(0.0f, 360.0f),
+		FMath::RandRange(0.0f, 360.0f),
+		FMath::RandRange(0.0f, 360.0f));
+
+	FTransform newTr(rot, loc);
 	GetWorld()->SpawnActor<ABook>(bookBlueprint, GetActorTransform(), spawnParams);
 }
 void AMainCharacter::SpawnBookActionCB(const FInputActionInstance& Instance)
