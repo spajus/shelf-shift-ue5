@@ -11,6 +11,8 @@ ABook::ABook()
 	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MeshComponent"));
 	RootComponent = MeshComponent;
 
+
+
 	TArray<FString> MeshPaths;
 	for (int i = 1; i <= 5; ++i) {
 		auto path = FString::Printf(TEXT("/Script/Engine.StaticMesh'/Game/Collections/3dModels/book_Book0%d.book_Book0%d'"), i, i);
@@ -23,6 +25,16 @@ ABook::ABook()
 	ConstructorHelpers::FObjectFinder<UStaticMesh> MeshAsset(*RandomAssetPath);
     if (MeshAsset.Succeeded()) {
         MeshComponent->SetStaticMesh(MeshAsset.Object);
+
+		/*
+		UMaterialInstanceDynamic* DynamicMaterial = UMaterialInstanceDynamic::Create(MeshComponent->GetMaterial(0), this);
+		float R = FMath::RandRange(0.0f, 1.0f);
+		float G = FMath::RandRange(0.0f, 1.0f);
+		float B = FMath::RandRange(0.0f, 1.0f);
+		DynamicMaterial->SetVectorParameterValue(FName("Color"), FLinearColor(R, G, B, 1.0f));
+		MeshComponent->SetMaterial(0, DynamicMaterial);
+		*/
+
     }
 	MeshComponent->SetSimulatePhysics(true);
 	// Increase mass
@@ -30,7 +42,7 @@ ABook::ABook()
 
 	// Increase damping
 	MeshComponent->BodyInstance.LinearDamping = 1.0f;
-	MeshComponent->BodyInstance.AngularDamping = 1.0f;
+	MeshComponent->BodyInstance.AngularDamping = 15.0f;
 }
 
 void ABook::ThrowAt(FVector dir) {
@@ -39,6 +51,8 @@ void ABook::ThrowAt(FVector dir) {
 
 	MeshComponent->SetPhysicsLinearVelocity(InitialVelocity);
 }
+
+
 
 // Called when the game starts or when spawned
 void ABook::BeginPlay()

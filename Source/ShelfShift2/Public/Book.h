@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Materials/MaterialInstanceDynamic.h"
 #include "Book.generated.h"
 
 UCLASS()
