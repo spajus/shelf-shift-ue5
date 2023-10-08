@@ -3,7 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameInputComponent.h"
+#include "InputMappingContext.h"
+#include "InputActionValue.h"
+#include "EnhancedInputComponent.h"
+#include "EnhancedInputSubsystems.h"
+#include "Engine/LocalPlayer.h"
 #include "GameFramework/Character.h"
 #include "Book.h"
 #include "MainCharacter.generated.h"
@@ -17,18 +21,23 @@ public:
 	// Sets default values for this character's properties
 	AMainCharacter();
 
-	UFUNCTION(BlueprintCallable, Category = "Debug")
-	void SpawnBook();
-
-	UFUNCTION(BlueprintCallable, Category = "Debug")
-	void SpawnBookActionCB(const FInputActionInstance& Instance);
-
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<ABook> bookBlueprint;
 
-	/** Jump Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* SpawnBookAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* FreeLookAction;
+
+	// Expose a mapping context as a property in your header file...
+    UPROPERTY(EditAnywhere, Category="Input")
+	UInputMappingContext* InputMapping;
+
+private:
+	bool HasMouseMotion;
+	FVector2D MouseMotion;
+	APlayerController* PlayerController;
 
 
 protected:
@@ -42,4 +51,9 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	void SpawnBookActionCB(const FInputActionInstance& Instance);
+	void FreeLookActionCB(const FInputActionInstance& Instance);
+
+private:
+	void SpawnBook();
 };

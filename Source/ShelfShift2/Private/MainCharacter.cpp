@@ -16,6 +16,12 @@ AMainCharacter::AMainCharacter()
 void AMainCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+	PlayerController = Cast<APlayerController>(GetController());
+	if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(
+		PlayerController->GetLocalPlayer()))
+	{
+		Subsystem->AddMappingContext(InputMapping, 0);
+	}
 
 }
 
@@ -23,15 +29,12 @@ void AMainCharacter::BeginPlay()
 void AMainCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
-}
-
-void AMainCharacter::SpawnBookActionCB(const FInputActionInstance& Instance)
-{
-	bool BoolValue = Instance.GetValue().Get<bool>();
-	if (BoolValue)
-	{
-		SpawnBook();
+	if (HasMouseMotion) {
+		FRotator rot = PlayerController->GetControlRotation();
+		rot.Pitch += MouseMotion.Y;
+		rot.Yaw += MouseMotion.X;
+		HasMouseMotion = false;
+		PlayerController->SetControlRotation(rot);
 	}
 }
 
@@ -41,7 +44,8 @@ void AMainCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	UEnhancedInputComponent* Input = Cast<UEnhancedInputComponent>(PlayerInputComponent);
 	// You can bind to any of the trigger events here by changing the "ETriggerEvent" enum value
-	Input->BindAction(SpawnBookAction, ETriggerEvent::Triggered, this, &AMainCharacter::SpawnBookActionCB);
+	Input->BindAction(SpawnBookAction, ETriggerEvent::Started, this, &AMainCharacter::SpawnBookActionCB);
+	Input->BindAction(FreeLookAction, ETriggerEvent::Triggered, this, &AMainCharacter::FreeLookActionCB);
 
 }
 
@@ -51,4 +55,11 @@ void AMainCharacter::SpawnBook()
 	spawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
 
 	GetWorld()->SpawnActor<ABook>(bookBlueprint, GetActorTransform(), spawnParams);
+}
+
+void AMainCharacter::FreeLookActionCB(const FInputActionInstance& Instance)
+{
+	MouseMotion = Instance.GetValue().Get<FVector2D>();
+	HasMouseMotion = true;
+	//GLog->Logf(TEXT("Input: %f:%f"), MouseMotion.X, MouseMotion.Y);
 }
