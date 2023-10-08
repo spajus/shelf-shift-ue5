@@ -22,6 +22,9 @@ public:
 	AMainCharacter();
 
 	UPROPERTY(EditAnywhere)
+	float SpawnFwdDist = 100.0f;
+
+	UPROPERTY(EditAnywhere)
 	TSubclassOf<ABook> bookBlueprint;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))

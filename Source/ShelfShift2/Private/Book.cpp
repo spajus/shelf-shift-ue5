@@ -27,6 +27,10 @@ ABook::ABook()
 	MeshComponent->SetSimulatePhysics(true);
 }
 
+void ABook::ThrowAt(FVector dir) {
+
+}
+
 // Called when the game starts or when spawned
 void ABook::BeginPlay()
 {
