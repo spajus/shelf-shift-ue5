@@ -30,13 +30,18 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* FreeLookAction;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* MoveAction;
+
 	// Expose a mapping context as a property in your header file...
     UPROPERTY(EditAnywhere, Category="Input")
 	UInputMappingContext* InputMapping;
 
 private:
-	bool HasMouseMotion;
-	FVector2D MouseMotion;
+	bool HasLook;
+	bool HasMove;
+	FVector2D LookMotion;
+	FVector2D MoveMotion;
 	APlayerController* PlayerController;
 
 
@@ -53,6 +58,7 @@ public:
 
 	void SpawnBookActionCB(const FInputActionInstance& Instance);
 	void FreeLookActionCB(const FInputActionInstance& Instance);
+	void MoveActionCB(const FInputActionInstance& Instance);
 
 private:
 	void SpawnBook();

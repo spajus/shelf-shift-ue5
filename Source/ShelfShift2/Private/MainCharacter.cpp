@@ -29,12 +29,17 @@ void AMainCharacter::BeginPlay()
 void AMainCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	if (HasMouseMotion) {
+	if (HasLook) {
 		FRotator rot = PlayerController->GetControlRotation();
-		rot.Pitch += MouseMotion.Y;
-		rot.Yaw += MouseMotion.X;
-		HasMouseMotion = false;
+		rot.Pitch += LookMotion.Y;
+		rot.Yaw += LookMotion.X;
+		HasLook = false;
 		PlayerController->SetControlRotation(rot);
+	}
+	if (HasMove) {
+		AddMovementInput(GetActorForwardVector(), MoveMotion.Y);
+		AddMovementInput(GetActorRightVector(), MoveMotion.X);
+		HasMove = false;
 	}
 }
 
@@ -46,6 +51,7 @@ void AMainCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 	// You can bind to any of the trigger events here by changing the "ETriggerEvent" enum value
 	Input->BindAction(SpawnBookAction, ETriggerEvent::Started, this, &AMainCharacter::SpawnBookActionCB);
 	Input->BindAction(FreeLookAction, ETriggerEvent::Triggered, this, &AMainCharacter::FreeLookActionCB);
+	Input->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AMainCharacter::MoveActionCB);
 
 }
 
@@ -56,10 +62,20 @@ void AMainCharacter::SpawnBook()
 
 	GetWorld()->SpawnActor<ABook>(bookBlueprint, GetActorTransform(), spawnParams);
 }
+void AMainCharacter::SpawnBookActionCB(const FInputActionInstance& Instance)
+{
+	SpawnBook();
+}
 
 void AMainCharacter::FreeLookActionCB(const FInputActionInstance& Instance)
 {
-	MouseMotion = Instance.GetValue().Get<FVector2D>();
-	HasMouseMotion = true;
+	LookMotion = Instance.GetValue().Get<FVector2D>();
+	HasLook = true;
+	//GLog->Logf(TEXT("Input: %f:%f"), MouseMotion.X, MouseMotion.Y);
+}
+void AMainCharacter::MoveActionCB(const FInputActionInstance& Instance)
+{
+	MoveMotion = Instance.GetValue().Get<FVector2D>();
+	HasMove = true;
 	//GLog->Logf(TEXT("Input: %f:%f"), MouseMotion.X, MouseMotion.Y);
 }
