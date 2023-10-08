@@ -52,6 +52,8 @@ void AMainCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 	Input->BindAction(SpawnBookAction, ETriggerEvent::Started, this, &AMainCharacter::SpawnBookActionCB);
 	Input->BindAction(FreeLookAction, ETriggerEvent::Triggered, this, &AMainCharacter::FreeLookActionCB);
 	Input->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AMainCharacter::MoveActionCB);
+	Input->BindAction(JumpAction, ETriggerEvent::Started, this, &AMainCharacter::Jump);
+	Input->BindAction(JumpAction, ETriggerEvent::Completed, this, &AMainCharacter::StopJumping);
 
 }
 
